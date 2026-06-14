@@ -64,43 +64,6 @@ you can see it is real because the same repositories are what make the tests fas
 
 ---
 
-## The weekly AI-assisted workflow
-
-We use AI to generate each week's code **after** the lecture, against this growing codebase.
-Keep these rules so the AI extends the architecture instead of fighting it:
-
-1. **Give it the context**: paste `ARCHITECTURE.md` + the relevant existing module(s).
-2. **State the week's topic and the deliverable** in architectural terms (e.g. Week 3 =
-   "introduce a Factory for notification channels; do not change `NotificationDispatcher`'s
-   public API").
-3. **Demand the constraints**: TypeScript strict, depend on existing abstractions, add tests,
-   keep each class single-responsibility, no breaking changes to public interfaces.
-4. **Require it to run**: `npm test` and `npm start` must still pass before you accept the diff.
-
-### Reusable prompt template
-
-```
-You are extending the UniRide backend (TypeScript, strict mode). Architecture and
-conventions are in ARCHITECTURE.md (attached). Existing code for the modules you will touch
-is attached.
-
-This week's lecture topic: <WEEK N TOPIC>.
-Deliverable: <what should exist after this week, in architectural terms>.
-
-Rules:
-- Reuse the existing abstractions (Clock, Logger, IdGenerator, *Repository, FarePolicy,
-  PaymentProvider, NotificationChannel). Do not duplicate them.
-- Each new class has a single responsibility; depend on interfaces, inject via constructor.
-- Do NOT change the public API of existing classes unless the task explicitly says so.
-- Add unit tests (node:test) for new behaviour and keep all existing tests green.
-- Output: the new/changed files in full, plus a one-line note per file on which
-  principle/pattern it demonstrates.
-
-Verify mentally that `npm test` and `npm start` still pass.
-```
-
----
-
 ## Roadmap (what later weeks add — intentionally absent now)
 
 | Week | Adds |
