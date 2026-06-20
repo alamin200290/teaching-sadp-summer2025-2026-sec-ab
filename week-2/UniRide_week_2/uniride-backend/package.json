@@ -1,0 +1,20 @@
+{
+  "name": "uniride-backend",
+  "version": "0.2.0-week2",
+  "description": "UniRide backend. Week 2: layered architecture + MVC HTTP API over the Week 1 domain core.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/src/main.js",
+    "demo": "npm run build && node dist/src/demo.js",
+    "test": "npm run build && node --test dist/test/*.test.js"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.25",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "dependencies": {
+    "express": "^4.22.2"
+  }
+}
