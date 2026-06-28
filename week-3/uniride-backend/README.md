@@ -61,34 +61,6 @@ the build if any inner layer imports `http/` or `express`; Week 3's new folders
 
 ---
 
-## Reusable AI codegen prompt template
-
-Use this to extend UniRide each week. Keep the constraints block verbatim — it is what keeps
-generated code inside the architecture.
-
-```
-You are extending the UniRide TypeScript backend (Node + Express, in-memory repos).
-
-CONTEXT
-- Layers: Presentation(http/) -> Application(app/) -> Domain(rides,drivers,matching,
-  payments,notifications,providers) -> Infrastructure(shared/, *InMemory*). Dependencies
-  point downward ONLY. Inner layers must never import http/ or express.
-- Composition happens exclusively in src/composition/container.ts (constructor injection).
-- Errors use shared/errors.ts (ValidationError 400 / NotFoundError 404 / UnavailableError 409).
-- Tests use node:test + node:assert. A fitness test (test/layering.test.ts) enforces the rule.
-
-TASK
-- <one capability, e.g. "apply Strategy to fare calculation (standard vs surge vs promo)">.
-
-RULES
-- New collaborators are interfaces in the layer that owns them; concretes injected via container.ts.
-- Do NOT call `new` for a dependency outside container.ts or a factory.
-- Add/extend tests; every new branch gets a case. Keep the build a clean `tsc`.
-- Output full file contents with paths. No business logic in controllers.
-```
-
----
-
 ## Roadmap
 - **Week 4** — Structural patterns (Adapter for the real bKash SDK, Decorator for surge/promo on `FarePolicy`, Facade over booking).
 - **Week 5** — Behavioural patterns (Strategy for matching, Observer for ride‑status events, State for the ride lifecycle).
